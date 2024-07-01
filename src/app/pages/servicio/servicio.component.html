@@ -1,0 +1,21 @@
+<table class="table mt-3 animated fadeIn faster">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Duración</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let servicio of servicios; let i = index">
+        <td>{{ i }}</td>
+        <td>{{ servicio.nombre }}</td>
+        <td>{{ servicio.descripcion }}</td>
+        <td>{{ servicio.precio }}</td>
+        <td>{{ servicio.duracion }}</td>
+      </tr>
+    </tbody>
+  </table>
+  

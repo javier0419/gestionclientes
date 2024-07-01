@@ -1,0 +1,27 @@
+<table class="table mt-3 animated fadeIn faster">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Género</th>
+      <th scope="col">Ciudad</th>
+      <th scope="col">País</th>
+      <th scope="col">Email</th>
+      <th scope="col">Contraseña</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cliente of clientes; let i = index">
+      <td>{{ i }}</td>
+      <td>{{ cliente.nombre }}</td>
+      <td>{{ cliente.apellido }}</td>
+      <td>{{ cliente.genero }}</td>
+      <td>{{ cliente.ciudad }}</td>
+      <td>{{ cliente.pais }}</td>
+      <td>{{ cliente.email }}</td>
+      <td>{{ cliente.contrasena }}</td>
+    </tr>
+  </tbody>
+</table>
+
