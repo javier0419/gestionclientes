@@ -17,10 +17,9 @@ export class ListaclienteComponent implements OnInit{
   ngOnInit(): void {
     
     this.procedureParam.inicia();    
-    this.procedureParam.pCampo0='Cnombre';
-    this.procedureParam.pValor0='a';
-    // Cnombre => C = like nombre=nombrecolumna (where like nombre '%%')
-    // Nidpaciente=> N = idpaciente=nombrecolumna(where idpaciente=1)
+    // this.procedureParam.pCampo0='Cnombre';
+    // this.procedureParam.pValor0='a';
+   
     console.log('1');
     this.cliente.selCliente(this.procedureParam)
       .subscribe((resp:any) => {

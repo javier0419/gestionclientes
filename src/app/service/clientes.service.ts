@@ -41,7 +41,7 @@ export class Scliente {
         return this.http.post<ClienteModel[]>(apiUlr + 'selcliente', body)
             .pipe(map((resp: any) => {
                 if (resp['info'] != null) {
-                    if (resp['mensaje'] != null) {
+                    if (resp['mesaje'] != null) {
                         return resp['info'].item;
                     } else {
                         console.log('FAILD');
@@ -72,13 +72,17 @@ export class Scliente {
                 console.log('respuesta');
                 console.log(resp);
                 if (resp['info'] != null) {
-                    if (resp['mensaje'] != null) {
+                    if (resp['mesaje'] != null) {
                         return resp['info'].item;
                     } else {
                         console.log('error conexion');
                         return null;
                     }
                 }
+                else {
+                    console.log('error coneccion');
+                    return null;
+                  }
             }));
     }
 }

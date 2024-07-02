@@ -18,11 +18,15 @@ export class ServicioComponent {
 
   ngOnInit(): void {
     this.procedureParam.inicia();
-    this.procedureParam.pCampo0 = 'Cnombre';
-    this.procedureParam.pValor0 = 'a';
-
+    // this.procedureParam.pCampo0 = 'T';
+    // this.procedureParam.pValor0 = 'a';
+    console.log('1');
     this.servicio.selServicio(this.procedureParam)
       .subscribe((resp: any) => {
+        console.log('aqui');
+        console.log(resp);
+        console.log(resp['mesaje']);
+        console.log(resp['info']);
         this.servicios = resp;
       });
   }

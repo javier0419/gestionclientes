@@ -12,9 +12,10 @@ const apillave = '';
 
 @Injectable({ providedIn: 'root' })
 export class Sservicio {
-  constructor(private http: HttpClient, public datepipe: DatePipe) {}
+  constructor(private http: HttpClient, public datepipe: DatePipe) { }
 
-  selServicio(procedureParam: ProcedureParam): Observable<ServicioModel[]> {
+  selServicio(procedureParam: ProcedureParam) {
+    console.log('1');
     const myheader = new HttpHeaders().set('Content-Type', 'application/form-data');
     let body = new HttpParams();
     body = body.set('idusuaro', '1');
@@ -39,8 +40,11 @@ export class Sservicio {
 
     return this.http.post<ServicioModel[]>(apiUlr + 'selservicio', body)
       .pipe(map((resp: any) => {
+       
         if (resp['info'] != null) {
-          if (resp['mensaje'] != null) {
+          console.log(resp);
+          if (resp['mesaje'] != null) {
+            console.log('mesaje');
             return resp['info'].item;
           } else {
             console.log('FAILD');
@@ -64,13 +68,18 @@ export class Sservicio {
 
     return this.http.post(apiUlr + 'addServicio', body)
       .pipe(map((resp: any) => {
+        console.log('respuesta');
+        console.log(resp);
         if (resp['info'] != null) {
-          if (resp['mensaje'] != null) {
+          if (resp['mesaje'] != null) {
             return resp['info'].item;
           } else {
             console.log('error conexion');
             return null;
           }
+        } else {
+          console.log('error coneccion');
+          return null;
         }
       }));
   }
