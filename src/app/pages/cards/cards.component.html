@@ -1,21 +1,24 @@
 <h1>
-    Buscando: <small>{{ termino }}</small>
-  </h1>
-  <hr />
-  
-  <div class="row animated fadeIn fast" 
-  *NgIf="productos.length == 0">
-    <div class="col-md-12">
-      <div class="alter alter-info"
-      role="alter">
-      No existen resultados con el termino:
-      {{termino}}
+  Buscando: <small>{{ termino }}</small>
+</h1>
+<hr />
+
+<div class="row animated fadeIn fast" *ngIf="productos.length == 0">
+  <div class="col-md-12">
+    <div class="alert alert-info" role="alert">
+      No existen resultados con el termino: {{ termino }}
+    </div>
+  </div>
+</div>
+
+<div class="row row-cols-3 g-3 m-3">
+  <div class="col" *ngFor="let producto of productos">
+    <div class="card">
+      <img [src]="producto.descripcion" class="card-img-top" alt="{{ producto.nombreproducto }}">
+      <div class="card-body">
+        <h5 class="card-title">{{ producto.nombreproducto }}</h5>
+        <p class="card-text">Precio: {{ producto.precio }} Bs.</p>
       </div>
     </div>
   </div>
-  
-  <!-- <div class="row row-cols-3 g-3 m-3">
-      <app-cardproducto-tarjeta [producto]="o" [index]="o.idx" *ngFor="let o of productos">
-      </app-cardproducto-tarjeta>
-  </div> -->
-  
+</div>
