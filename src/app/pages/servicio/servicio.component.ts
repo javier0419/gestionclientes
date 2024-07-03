@@ -23,10 +23,7 @@ export class ServicioComponent {
     console.log('1');
     this.servicio.selServicio(this.procedureParam)
       .subscribe((resp: any) => {
-        console.log('aqui');
-        console.log(resp);
-        console.log(resp['mesaje']);
-        console.log(resp['info']);
+        
         this.servicios = resp;
       });
   }

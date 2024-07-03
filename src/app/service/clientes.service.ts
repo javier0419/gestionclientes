@@ -79,10 +79,54 @@ export class Scliente {
                         return null;
                     }
                 }
-                else {
-                    console.log('error coneccion');
-                    return null;
-                  }
+                else {console.log('error coneccion');return null;}
             }));
     }
-}
+    
+    updateCliente(cliente: ClienteModel): Observable<any> {
+        const myheader = new HttpHeaders().set('Content-Type', 'application/form-data');
+        let body = new HttpParams();
+        // parámetros de actualización
+        body = body.set('pidcliente', cliente.idcliente.toString());
+        body = body.set('pnombre', cliente.nombre);
+        body = body.set('papellido', cliente.apellido);
+        body = body.set('pgenero', cliente.genero);
+        body = body.set('pciudad', cliente.ciudad);
+        body = body.set('ppais', cliente.pais);
+        body = body.set('pemail', cliente.email);
+        body = body.set('pcontrasena', cliente.contrasena);
+    
+        return this.http.post(apiUlr + 'updateCliente', body)
+          .pipe(map((resp: any) => {
+            if (resp['info'] != null) {
+              if (resp['mesaje'] != null) {
+                return resp['info'].item;
+              } else {
+                console.log('error conexion');
+                return null;
+              }
+            }
+          }));
+      }
+    
+      deleteCliente(idcliente: number): Observable<any> {
+        const myheader = new HttpHeaders().set('Content-Type', 'application/form-data');
+        let body = new HttpParams();
+        // parámetro de eliminación
+        body = body.set('pidcliente', idcliente.toString());
+    
+        return this.http.post(apiUlr + 'deleteCliente', body)
+          .pipe(map((resp: any) => {
+            if (resp['info'] != null) {
+              if (resp['mesaje'] != null) {
+                return resp['info'].item;
+              } else {
+                console.log('error conexion');
+                return null;
+              }
+            }
+          }));
+      }
+ }
+
+//  const apiUlr = 'https://disweb.jokamaliva.com/jvn/';
